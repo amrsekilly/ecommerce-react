@@ -1,12 +1,25 @@
 import React from "react";
-import products from "../Data/products.json";
+import axios from "axios";
 import { ProductsList } from "./ProductsList.js";
 import { Cart } from "./Cart";
 
 // Renders all products to the screen
 export class Home extends React.Component {
+  componentDidMount() {
+    this.getProducts();
+  }
+
   state = {
     count: 0,
+    products: [],
+  };
+
+  getProducts = () => {
+    axios
+      .get("http://localhost:4000/products")
+      .then((backendResponse) =>
+        this.setState({ products: backendResponse.data })
+      );
   };
 
   increaseCount = () => {
@@ -18,7 +31,10 @@ export class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <ProductsList handleClick={this.increaseCount} products={products} />
+        <ProductsList
+          handleClick={this.increaseCount}
+          products={this.state.products}
+        />
         <Cart count={this.state.count} />
       </div>
     );
