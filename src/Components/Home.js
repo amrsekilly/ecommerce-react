@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { ProductsList } from "./ProductsList.js";
+import { AddProduct } from "./AddProduct";
 import { Cart } from "./Cart";
 
 // Renders all products to the screen
@@ -31,6 +32,7 @@ export class Home extends React.Component {
   render() {
     return (
       <div className="home">
+        <AddProduct />
         <ProductsList
           handleClick={this.increaseCount}
           products={this.state.products}
