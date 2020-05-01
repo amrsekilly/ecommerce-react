@@ -13,7 +13,7 @@
   },
   "scripts": {
     "startBackend": "json-server --watch db.json --port=4000",
-    "start": "yarn startBackend & react-scripts start",
+    "start": "yarn startBackend & PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
