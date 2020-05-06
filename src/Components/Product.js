@@ -13,6 +13,12 @@ export class Product extends Component {
           <button onClick={this.props.handleClick} className="btn">
             Add to Cart
           </button>
+          <button
+            onClick={() => this.props.handleProductClick(this.props.product.id)}
+            className="btn view-button"
+          >
+            View Product
+          </button>
         </div>
       </div>
     );

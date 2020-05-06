@@ -66,6 +66,10 @@
   margin-bottom: 30px;
 }
 
+.view-button {
+  background-color: red;
+}
+
 .btn-container {
   text-align: center;
 }
