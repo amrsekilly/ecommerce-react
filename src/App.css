@@ -38,19 +38,17 @@
   }
 }
 
-.home {
-  display: flex;
-}
+.home {}
 
 .products {
-  display: flex;
   margin: 100px 100px 100px 100px;
 }
 
 .product {
   min-width: 300px;
   min-height: 300px;
-  border: 3px solid blue;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .product-image {
@@ -78,5 +76,4 @@
 .create-product {
   min-width: 300px;
   min-height: 300px;
-  border: 3px solid cyan;
 }

@@ -5,6 +5,8 @@ import { ProductsList } from "./ProductsList.js";
 import { AddProduct } from "./AddProduct";
 import { ProductPage } from "./ProductPage";
 import { Cart } from "./Cart";
+import { NavbarComponent } from "./Navbar";
+import { NavCart } from "./NavCart";
 
 // Renders all products to the screen
 export class Home extends React.Component {
@@ -56,19 +58,10 @@ export class Home extends React.Component {
     return (
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/add-product">Add New Product</Link>
-              </li>
-              <li>
-                <Link to="/cart">Shopping Cart</Link>
-              </li>
-            </ul>
-          </nav>
+          <NavbarComponent>
+            <NavCart count={this.state.count} />
+          </NavbarComponent>
+
           <div className="home">
             <Switch>
               <Route path="/products/:id">
