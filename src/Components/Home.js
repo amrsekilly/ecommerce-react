@@ -52,10 +52,6 @@ export class Home extends React.Component {
     );
   };
 
-  handleProductClick = (productId) => {
-    console.log("the product is: ", productId);
-  };
-
   render() {
     return (
       <Router>
@@ -75,6 +71,9 @@ export class Home extends React.Component {
           </nav>
           <div className="home">
             <Switch>
+              <Route path="/products/:id">
+                <ProductPage />
+              </Route>
               <Route path="/add-product">
                 <AddProduct
                   handleNameChange={this.handleNameChange}
