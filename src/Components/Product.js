@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Col, Card, Button } from "react-bootstrap";
+import { connect } from "react-redux"; // HOC - Higher Order Component
 import { Link } from "react-router-dom";
+import { increaseCount } from "../Store/Actions/shoppingCart";
 
-export class Product extends Component {
+class UnwrappedProduct extends Component {
   render() {
     return (
       <Col xs={4} className="product">
@@ -11,7 +13,7 @@ export class Product extends Component {
             <Card.Title>{this.props.product.name}</Card.Title>
             <Card.Text>Price: ${this.props.product.price}</Card.Text>
 
-            <Button variant="primary" onClick={this.props.handleClick}>
+            <Button variant="primary" onClick={this.props.increaseCount}>
               Add to Cart
             </Button>
             <Link to={`/products/${this.props.product.id}`}>
@@ -25,3 +27,9 @@ export class Product extends Component {
     );
   }
 }
+
+const mapDispatchToProps = {
+  increaseCount,
+};
+
+export const Product = connect(null, mapDispatchToProps)(UnwrappedProduct);
