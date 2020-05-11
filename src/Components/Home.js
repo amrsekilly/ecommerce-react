@@ -10,16 +10,12 @@ import { NavCart } from "./NavCart";
 
 // Renders all products to the screen
 export class Home extends React.Component {
-  state = {
-    count: 0,
-  };
-
   render() {
     return (
       <Router>
         <div>
           <NavbarComponent>
-            <NavCart count={this.state.count} />
+            <NavCart />
           </NavbarComponent>
 
           <div className="home">
@@ -31,10 +27,10 @@ export class Home extends React.Component {
                 <AddProduct />
               </Route>
               <Route path="/cart">
-                <Cart count={this.state.count} />
+                <Cart />
               </Route>
               <Route path="/">
-                <ProductsList handleProductClick={this.handleProductClick} />
+                <ProductsList />
               </Route>
             </Switch>
           </div>

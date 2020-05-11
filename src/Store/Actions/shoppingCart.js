@@ -1,7 +1,6 @@
-// Action types
-export const INCREASE_COUNT = "INCREASE_COUNT";
+export const ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART";
 
-// Action creators
-export const increaseCount = () => ({
-  type: INCREASE_COUNT,
+export const addProductToCart = (payload) => ({
+  type: ADD_PRODUCT_TO_CART,
+  payload,
 });

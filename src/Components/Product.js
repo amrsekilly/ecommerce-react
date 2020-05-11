@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Card, Button } from "react-bootstrap";
 import { connect } from "react-redux"; // HOC - Higher Order Component
 import { Link } from "react-router-dom";
-import { increaseCount } from "../Store/Actions/shoppingCart";
+import { addProductToCart } from "../Store/Actions/shoppingCart";
 
 class UnwrappedProduct extends Component {
   render() {
@@ -13,7 +13,10 @@ class UnwrappedProduct extends Component {
             <Card.Title>{this.props.product.name}</Card.Title>
             <Card.Text>Price: ${this.props.product.price}</Card.Text>
 
-            <Button variant="primary" onClick={this.props.increaseCount}>
+            <Button
+              variant="primary"
+              onClick={() => this.props.addProductToCart(this.props.product)}
+            >
               Add to Cart
             </Button>
             <Link to={`/products/${this.props.product.id}`}>
@@ -29,7 +32,7 @@ class UnwrappedProduct extends Component {
 }
 
 const mapDispatchToProps = {
-  increaseCount,
+  addProductToCart,
 };
 
 export const Product = connect(null, mapDispatchToProps)(UnwrappedProduct);
