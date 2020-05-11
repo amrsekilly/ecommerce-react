@@ -7,8 +7,8 @@ class UnwrappedNavCart extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  count: state.shoppingCart.count,
+const mapStateToProps = ({ shoppingCart: { count } }) => ({
+  count,
 });
 
 export const NavCart = connect(mapStateToProps)(UnwrappedNavCart);

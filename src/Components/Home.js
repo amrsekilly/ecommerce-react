@@ -10,27 +10,10 @@ import { NavCart } from "./NavCart";
 
 // Renders all products to the screen
 export class Home extends React.Component {
-  componentDidMount() {
-    this.getProducts();
-  }
-
   state = {
     count: 0,
-    products: [],
     name: "",
     price: "",
-  };
-
-  getProducts = () => {
-    axiosGet(`${process.env.REACT_APP_BASE_URL}/products`).then((res) =>
-      this.setState({ products: res.data })
-    );
-  };
-
-  increaseCount = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
   };
 
   handlePriceChange = (e) => {
@@ -80,11 +63,7 @@ export class Home extends React.Component {
                 <Cart count={this.state.count} />
               </Route>
               <Route path="/">
-                <ProductsList
-                  handleClick={this.increaseCount}
-                  products={this.state.products}
-                  handleProductClick={this.handleProductClick}
-                />
+                <ProductsList handleProductClick={this.handleProductClick} />
               </Route>
             </Switch>
           </div>
