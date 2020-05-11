@@ -1,4 +1,8 @@
-import { GET_PRODUCTS, SET_PRODUCT_LIST } from "../Actions/products";
+import {
+  GET_PRODUCTS,
+  SET_PRODUCT_LIST,
+  ADD_PRODUCT_TO_PRODUCT_LIST,
+} from "../Actions/products";
 
 const initialState = {
   productList: [],
@@ -14,6 +18,11 @@ export const products = (state = initialState, action) => {
       return {
         ...state,
         productList: action.payload,
+      };
+    case ADD_PRODUCT_TO_PRODUCT_LIST:
+      return {
+        ...state,
+        productList: [...state.productList, action.payload],
       };
     default:
       return state;

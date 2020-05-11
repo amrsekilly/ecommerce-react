@@ -1,14 +1,26 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { submitProduct } from "../Store/Requests/products";
 
-export class AddProduct extends Component {
+export class UnwrappedAddProduct extends Component {
+  state = {
+    name: "",
+    price: "",
+  };
+
+  handlePriceChange = (e) => {
+    this.setState({
+      price: e.target.value,
+    });
+  };
+
+  handleNameChange = (e) => {
+    this.setState({
+      name: e.target.value,
+    });
+  };
+
   render() {
-    const {
-      handleNameChange,
-      handlePriceChange,
-      handleSubmit,
-      name,
-      price,
-    } = this.props;
     return (
       <div className="create-product">
         <label>
@@ -17,22 +29,38 @@ export class AddProduct extends Component {
           {/* this is an controlled input field */}
           <input
             type="text"
-            onChange={handleNameChange}
+            onChange={this.handleNameChange}
             placeholder="Product Name"
-            value={name}
+            value={this.state.name}
           />
         </label>
         <label>
           Price:{" "}
           <input
             type="text"
-            onChange={handlePriceChange}
-            value={price}
+            onChange={this.handlePriceChange}
+            value={this.state.price}
             placeholder="Price"
           />
         </label>
-        <button onClick={handleSubmit}>Submit Product</button>
+        <button
+          onClick={() =>
+            this.props.submitProduct(this.state.name, this.state.price)
+          }
+        >
+          Submit Product
+        </button>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  submitProduct: (name, price) =>
+    dispatch(submitProduct(dispatch, name, price)),
+});
+
+export const AddProduct = connect(
+  null,
+  mapDispatchToProps
+)(UnwrappedAddProduct);

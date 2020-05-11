@@ -12,29 +12,6 @@ import { NavCart } from "./NavCart";
 export class Home extends React.Component {
   state = {
     count: 0,
-    name: "",
-    price: "",
-  };
-
-  handlePriceChange = (e) => {
-    this.setState({
-      price: e.target.value,
-    });
-  };
-
-  handleNameChange = (e) => {
-    this.setState({
-      name: e.target.value,
-    });
-  };
-
-  handleSubmit = () => {
-    axiosPost(`${process.env.REACT_APP_BASE_URL}/products`, {
-      name: this.state.name,
-      price: this.state.price,
-    }).then((res) =>
-      this.setState({ products: [...this.state.products, res.data] })
-    );
   };
 
   render() {
@@ -51,13 +28,7 @@ export class Home extends React.Component {
                 <ProductPage />
               </Route>
               <Route path="/add-product">
-                <AddProduct
-                  handleNameChange={this.handleNameChange}
-                  handlePriceChange={this.handlePriceChange}
-                  handleSubmit={this.handleSubmit}
-                  name={this.state.name}
-                  price={this.state.price}
-                />
+                <AddProduct />
               </Route>
               <Route path="/cart">
                 <Cart count={this.state.count} />
